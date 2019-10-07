@@ -19,7 +19,7 @@ import { AuthService } from './shared/services/auth.service';
 // Constants
 import { environment } from 'src/environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 

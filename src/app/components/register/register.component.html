@@ -1,4 +1,11 @@
-<form>
-    <label>Login ID: </label>
-    <input type="password" placeholder="Password">
+<form class="form">
+    <div class="form-group">
+        <label>Login ID: </label>
+        <input class="form-control" id="userId" type="text" placeholder="Id" required>
+    </div>
+    <div class="form-group">
+        <label for="pass">Password: </label>
+        <input class="form-control" id="userPass" type="password" placeholder="Password" required>
+    </div>
+    <button (click)="tryRegister()">Register</button>
 </form>

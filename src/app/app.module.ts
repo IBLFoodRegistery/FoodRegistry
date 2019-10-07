@@ -19,6 +19,7 @@ import { AuthService } from './shared/services/auth.service';
 // Constants
 import { environment } from 'src/environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -28,7 +29,8 @@ import { LandingComponent } from './components/landing/landing.component';
         HeaderComponent,
         LoginComponent,
         RegisterComponent,
-        LandingComponent
+        LandingComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,

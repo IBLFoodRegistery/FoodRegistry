@@ -15,7 +15,7 @@ export class AuthService {
 
     doLogin(value) {
         return new Promise<any>((resolve, reject) => {
-            this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
+            this.afAuth.auth.signInWithEmailAndPassword(value.userEmail, value.userPass)
                 .then(res => {
                     resolve(res);
                 }, err => reject(err));
@@ -24,11 +24,15 @@ export class AuthService {
 
     doRegister(value) {
         return new Promise<any>((resolve, reject) => {
-            this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+            this.afAuth.auth.createUserWithEmailAndPassword(value.userEmail, value.userPass)
                 .then(res => {
                     resolve(res);
                 }, err => reject(err))
         });
+    }
+
+    doSignOut() {
+        this.afAuth.auth.signOut();
     }
 
     doGoogleLogin() {

@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { auth as firebaseAuth, User } from 'firebase/app';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+export class userModel{
+    email: string;
+    uid: string;
+    role: string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +23,7 @@ export class AuthService {
     userData: User;
 
     constructor(private afAuth: AngularFireAuth,
+                private http: HttpClient,
                 private afStore: AngularFirestore,
                 private router: Router) {
         this.afAuth.authState.subscribe(user => {
@@ -28,9 +36,13 @@ export class AuthService {
         })
     }
 
-    async doEmailSignUp(email: string, password: string) {
-        let result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-        this.sendEmailVerification();
+    async doEmailSignUp(value: any) {
+        await this.afAuth.auth.createUserWithEmailAndPassword(value.userEmail, value.userPass).then((user) => {
+            this.http.post('https://ilp-food-registry.firebaseio.com/', user).subscribe( myData => {
+                console.log('user added to db');
+            });
+        });
+        this.router.navigate(['/verify-email']);
     }
 
     async doLogin(email: string, password: string) {
@@ -38,8 +50,10 @@ export class AuthService {
         this.router.navigate(['/home']);
     }
 
-    async sendEmailVerification() {
-        await this.afAuth.auth.currentUser.sendEmailVerification()
-        this.router.navigate(['/verify-email']);
+    async doSignOut(){
+        this.afAuth.auth.signOut().then( () => {
+            this.userData = null;
+        });
     }
+
 }

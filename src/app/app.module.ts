@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -40,6 +41,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        HttpClientModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, only needed for database features

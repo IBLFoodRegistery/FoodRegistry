@@ -20,6 +20,7 @@ import { AuthService } from './shared/services/auth.service';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -38,7 +39,7 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
     imports: [
         BrowserModule,
         AppRoutingModule,
-       // AngularFireModule.initializeApp(environment.firebase),
+        AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, only needed for database features
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
     ],

@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { auth as firebaseAuth, } from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Profile } from 'src/app/components/profile/profile';
+
 
 
 interface User {
@@ -18,7 +20,7 @@ interface User {
     providedIn: 'root'
 })
 export class AuthService {
-    userData: Observable<User>;
+    userData: Observable<Profile>;
 
     constructor(private afAuth: AngularFireAuth,
         private afStore: AngularFirestore,
@@ -26,7 +28,7 @@ export class AuthService {
         this.userData = this.afAuth.authState.pipe(
             switchMap(user => {
                 if (user) {
-                    return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
+                    return this.afStore.doc<Profile>(`users/${user.uid}`).valueChanges();
                 } else {
                     return of(null);
                 }
@@ -92,10 +94,13 @@ export class AuthService {
 
         const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
 
-        const data: User = {
+        const data: Profile = {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName,
+            familyMembers: user.familyMembers,
+            carePackage: user.carePackage,
+            foodPackage: user.foodPackage
         };
 
         return userRef.set(data, { merge: true });

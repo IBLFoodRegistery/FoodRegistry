@@ -1,7 +1,7 @@
 <div *ngIf="auth.userData | async; then loggedIn else guest"></div>
 <ng-template #loggedIn>
     <div>
-        <div *ngIf="auth.userData | async as user">
+        <div *ngIf="auth.userData as user">
             <span>
                 Loggin in with
             </span>

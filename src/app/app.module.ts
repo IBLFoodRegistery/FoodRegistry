@@ -22,7 +22,6 @@ import { environment } from 'src/environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './shared/services/auth.guard';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
@@ -47,7 +46,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
     ],
 
-    providers: [AuthService, AuthGuard],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

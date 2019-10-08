@@ -11,12 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 // Services
-import { AuthGuard } from './shared/services/auth.guard';
 
 
 
 const routes: Routes = [
-    { path: '', component: LandingComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: '', component: LandingComponent, pathMatch: 'full' },
     { path: 'login', component: LoginComponent, },
     { path: 'register', component: RegisterComponent, },
     { path: 'home', component: HomeComponent, },

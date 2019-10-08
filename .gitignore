@@ -3,6 +3,8 @@
 environment.ts
 environment.prod.ts
 
+/e2e
+
 
 # compiled output
 /dist

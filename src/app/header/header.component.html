@@ -1,4 +1,8 @@
 <div>
     <span>Header works! </span>
     <a routerLink="">Return Home</a>
+    <div *ngIf="auth.userData | async; then loggedIn else guest"></div>
+    <ng-template #loggedIn>
+        <button (click)="auth.doSignOut()">Logout</button>
+    </ng-template>    
 </div>

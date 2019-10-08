@@ -1,8 +1,17 @@
-<div *ngIf="auth.user | async; then loggedIn else guest"></div>
-
+<div *ngIf="auth.userData | async; then loggedIn else guest"></div>
 <ng-template #loggedIn>
     <div>
-        <h1> you are logged in !!!!</h1>
+        <div *ngIf="auth.userData | async as user">
+            <span>
+                Loggin in with
+            </span>
+            <ul>
+                <li>{{user.displayName}}</li>
+                <li>{{user.email}}</li>
+                <li>{{user.uid}}</li>
+            </ul>
+        </div>
+        
     </div>
 </ng-template>
 <ng-template #guest>

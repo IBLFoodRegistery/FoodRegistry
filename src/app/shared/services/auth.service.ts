@@ -32,8 +32,6 @@ export class AuthService {
                 }
             })
         );
-        console.log('testing construcotr');
-        console.log(this.userData);
     }
 
     doLogin(value) {
@@ -55,26 +53,28 @@ export class AuthService {
     }
 
     doSignOut() {
-        this.afAuth.auth.signOut();
+        this.afAuth.auth.signOut().then(() => {
+            this.router.navigate(['/']);
+        });
     }
 
     // ---------------------------------
     // Social logins below
     // ---------------------------------
-    doGoogleLogin() {
-        return new Promise<any>((resolve, reject) => {
-            const provider = new firebaseAuth.GoogleAuthProvider();
-            provider.addScope('profile');
-            provider.addScope('email');
-            this.afAuth.auth
-                .signInWithPopup(provider)
-                .then(res => {
-                    resolve(res);
-                });
-        });
-    }
+    // doGoogleLogin() {
+    //     return new Promise<any>((resolve, reject) => {
+    //         const provider = new firebaseAuth.GoogleAuthProvider();
+    //         provider.addScope('profile');
+    //         provider.addScope('email');
+    //         this.afAuth.auth
+    //             .signInWithPopup(provider)
+    //             .then(res => {
+    //                 resolve(res);
+    //             });
+    //     });
+    // }
 
-    googleLogin() {
+    doGoogleLogin() {
         const provider = new firebaseAuth.GoogleAuthProvider()
         return this.oAuthLogin(provider);
     }

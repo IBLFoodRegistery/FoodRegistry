@@ -1,6 +1,7 @@
 // Core Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -22,6 +23,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { environment } from 'src/environments/environment';
 
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './shared/services/auth.guard';
 
 
 
@@ -33,18 +36,19 @@ import { environment } from 'src/environments/environment';
         RegisterComponent,
         LandingComponent,
         ProfileComponent,
-        CarepackageComponent
-
+        CarepackageComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
+        FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, only needed for database features
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
     ],
 
-    providers: [AuthService,],
+    providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

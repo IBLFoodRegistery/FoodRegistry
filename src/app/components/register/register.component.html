@@ -1,4 +1,21 @@
-<form>
-    <label>Login ID: </label>
-    <input type="password" placeholder="Password">
+<div *ngIf="errorMessage.length > 0; then showError else noError"></div>
+<ng-template #showError>
+    <span style="color: red;">Invalid Registeration!</span>
+</ng-template>
+
+<div *ngIf="successMessage.length > 0; then showMsg else noMsg"></div>
+<ng-template #showMsg>
+    <span style="color: green;">Registration successful!</span>
+</ng-template>
+
+<form #f="ngForm" class="form" (ngSubmit)="tryRegister(f)">
+    <div class="form-group">
+        <label for="userEmail">Register Email: </label>
+        <input ngModel class="form-control" type="email" name="userEmail" id="userEmail" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+        <label for="userPass">Password: </label>
+        <input ngModel class="form-control" type="password" name="userPass" id="userPass" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn btn-success pull-right">Register</button>
 </form>

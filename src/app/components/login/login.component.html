@@ -1,9 +1,4 @@
-<div *ngIf="auth.userData | async; then loggedIn else guest"></div>
-<ng-template #loggedIn>
-    <h1>You're already logged in!</h1>
-</ng-template>
 
-<ng-template #guest>
     <div *ngIf="errorMessage.length > 0; then showError else noError"></div>
     <ng-template #showError>
         <span style="color: red;">Invalid Login!</span>
@@ -26,11 +21,3 @@
         </div>
         <button type="submit" class="btn btn-success pull-right">Login</button>
     </form>
-    <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
-
-    <button (click)="auth.doGoogleLogin()">
-        <i class="fa fa-google"></i> Connect Google
-    </button>
-
-</ng-template>

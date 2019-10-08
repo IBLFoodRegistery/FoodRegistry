@@ -23,6 +23,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './shared/services/auth.guard';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 
@@ -34,7 +35,8 @@ import { AuthGuard } from './shared/services/auth.guard';
         RegisterComponent,
         LandingComponent,
         CarepackageComponent,
-        HomeComponent
+        HomeComponent,
+        VerifyEmailComponent
     ],
     imports: [
         BrowserModule,

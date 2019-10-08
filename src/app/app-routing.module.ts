@@ -8,9 +8,11 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';
+
 
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent, },
     { path: 'register', component: RegisterComponent, },
     { path: 'home', component: HomeComponent, },
+    { path: 'verify-email', component: VerifyEmailComponent, },
 
 ];
 

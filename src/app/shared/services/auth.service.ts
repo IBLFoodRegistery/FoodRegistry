@@ -3,102 +3,43 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { auth as firebaseAuth, } from 'firebase/app';
+import { auth as firebaseAuth, User } from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-
-interface User {
-    displayName?: string;
-    email: string;
-    uid: string;
-}
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    userData: Observable<User>;
+    authToken: any;
+    userData: User;
 
     constructor(private afAuth: AngularFireAuth,
-        private afStore: AngularFirestore,
-        private router: Router) {
-        this.userData = this.afAuth.authState.pipe(
-            switchMap(user => {
-                if (user) {
-                    return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
-                } else {
-                    return of(null);
-                }
-            })
-        );
+                private afStore: AngularFirestore,
+                private router: Router) {
+        this.afAuth.authState.subscribe(user => {
+            if (user) {
+                this.userData = user;
+                localStorage.setItem('user', JSON.stringify(this.userData));
+            } else {
+                localStorage.setItem('user', null);
+            }
+        })
     }
 
-    doLogin(value) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth.auth.signInWithEmailAndPassword(value.userEmail, value.userPass)
-                .then(res => {
-                    resolve(res);
-                }, err => reject(err));
-        });
+    async doEmailSignUp(email: string, password: string) {
+        let result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+        this.sendEmailVerification();
     }
 
-    doRegister(value) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth.auth.createUserWithEmailAndPassword(value.userEmail, value.userPass)
-                .then(res => {
-                    resolve(res);
-                }, err => reject(err));
-        });
+    async doLogin(email: string, password: string) {
+        let result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+        this.router.navigate(['/home']);
     }
 
-    doSignOut() {
-        this.afAuth.auth.signOut().then(() => {
-            this.router.navigate(['/']);
-        });
-    }
-
-    // ---------------------------------
-    // Social logins below
-    // ---------------------------------
-    // doGoogleLogin() {
-    //     return new Promise<any>((resolve, reject) => {
-    //         const provider = new firebaseAuth.GoogleAuthProvider();
-    //         provider.addScope('profile');
-    //         provider.addScope('email');
-    //         this.afAuth.auth
-    //             .signInWithPopup(provider)
-    //             .then(res => {
-    //                 resolve(res);
-    //             });
-    //     });
-    // }
-
-    doGoogleLogin() {
-        const provider = new firebaseAuth.GoogleAuthProvider()
-        return this.oAuthLogin(provider);
-    }
-
-    private oAuthLogin(provider) {
-        return this.afAuth.auth.signInWithPopup(provider)
-            .then((credential) => {
-                this.updateUserData(credential.user);
-            });
-    }
-
-
-    private updateUserData(user) {
-        // Sets user data to firestore on login
-
-        const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
-
-        const data: User = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-        };
-
-        return userRef.set(data, { merge: true });
-
+    async sendEmailVerification() {
+        await this.afAuth.auth.currentUser.sendEmailVerification()
+        this.router.navigate(['/verify-email']);
     }
 }

@@ -17,7 +17,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './shared/services/auth.service';
 
 // Constants
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environmentOLD';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
 

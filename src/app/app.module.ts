@@ -21,6 +21,8 @@ import { AuthService } from './shared/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './shared/services/auth.guard';
 
 
 
@@ -31,7 +33,8 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
         LoginComponent,
         RegisterComponent,
         LandingComponent,
-        CarepackageComponent
+        CarepackageComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -42,7 +45,7 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
     ],
 
-    providers: [AuthService,],
+    providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

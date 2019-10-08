@@ -1,10 +1,17 @@
-<div>
-    <br>
-    <p>Landing works! Here are some shortcuts to components under development</p>
-    <ul>
-        <li><a routerLink="login">Login</a></li>
-        <li><a routerLink="register">Register</a></li>
-    </ul>
-    
-    
-</div>
+<div *ngIf="auth.user | async; then loggedIn else guest"></div>
+
+<ng-template #loggedIn>
+    <div>
+        <h1> you are logged in !!!!</h1>
+    </div>
+</ng-template>
+<ng-template #guest>
+    <div>
+        <br>
+        <p>Landing works! Here are some shortcuts to components under development</p>
+        <ul>
+            <li><a routerLink="login">Login</a></li>
+            <li><a routerLink="register">Register</a></li>
+        </ul>
+    </div>
+</ng-template>

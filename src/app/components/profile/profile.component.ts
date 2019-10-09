@@ -13,20 +13,20 @@ export class ProfileComponent implements OnInit {
   user : any;
   userID : string;
 
-  constructor(private profileService : ProfileService, public auth: AuthService) { 
+  constructor(public auth: AuthService) { 
   
   }
 
   ngOnInit() {
-    this.loadProfile();
+   // this.loadProfile();
     this.user = this.auth.userData;
     this.userID = this.user.uid;
   }
 
-  loadProfile() {
-    this.profileService.getProfileList().subscribe((res) => {
-      this.profileService.selectedProfile = res as Profile;
+  // loadProfile() {
+  //   this.profileService.getProfileList().subscribe((res) => {
+  //     this.profileService.selectedProfile = res as Profile;
       
-    });
-  }
+  //   });
+ // }
 }

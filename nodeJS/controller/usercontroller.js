@@ -4,7 +4,7 @@ const BodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 
-var user = require('../model/user');
+//var user = require('../model/user');
 const CONNECTION_URL = "mongodb+srv://admin:pass@users-k5b45.mongodb.net/test?retryWrites=true&w=majority"
 const DATABASE_NAME = "Users";
 
@@ -45,12 +45,12 @@ app.get("/getUser", (req, res) => {
 })
 
 app.get("/getUser/:id", (req, res) =>{
-    var todoid = req.params.id;
+    var todoid = new ObjectId(req.params.id);
     collection.findOne({_id: todoid}, (err, result) =>{
         if(err){
             return res.status(500).send(error);
         }
-        res.send(result);
+        res.json(result);
     })
 })
 

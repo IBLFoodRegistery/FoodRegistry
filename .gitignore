@@ -2,7 +2,8 @@
 # Angular files
 environment.ts
 environment.prod.ts
-
+nodeJS/node_modules/
+nodeJS/package.json
 
 # compiled output
 /dist

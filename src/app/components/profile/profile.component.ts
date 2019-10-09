@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from './profile';
 import { ProfileService } from './shared/profile.services';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,13 +10,17 @@ import { ProfileService } from './shared/profile.services';
 })
 export class ProfileComponent implements OnInit {
   Profile = new Profile('test', 1, 'test@email.com', 3, 0, 0);
+  private user : any;
+  userID : string;
 
-  constructor(private profileService : ProfileService) { 
-
+  constructor(private profileService : ProfileService, public auth: AuthService) { 
+  
   }
 
   ngOnInit() {
     this.loadProfile();
+    this.user = this.auth.userData;
+    this.userID = this.user.uid;
   }
 
   loadProfile() {

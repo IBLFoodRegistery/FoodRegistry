@@ -23,11 +23,6 @@ import { AuthService } from './shared/services/auth.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
-import { AdminComponent } from './admin/admin.component';
-import { SubscriberComponent } from './subscriber/subscriber.component';
-
-
-
 
 
 @NgModule({
@@ -39,8 +34,6 @@ import { SubscriberComponent } from './subscriber/subscriber.component';
         LandingComponent,
         CarepackageComponent,
         HomeComponent,
-        AdminComponent,
-        SubscriberComponent
     ],
     imports: [
         BrowserModule,

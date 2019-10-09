@@ -23,6 +23,8 @@ import { AuthService } from './shared/services/auth.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
+import { AdminComponent } from './admin/admin.component';
+import { SubscriberComponent } from './subscriber/subscriber.component';
 
 
 
@@ -36,7 +38,9 @@ import { environment } from 'src/environments/environment';
         RegisterComponent,
         LandingComponent,
         CarepackageComponent,
-        HomeComponent
+        HomeComponent,
+        AdminComponent,
+        SubscriberComponent
     ],
     imports: [
         BrowserModule,

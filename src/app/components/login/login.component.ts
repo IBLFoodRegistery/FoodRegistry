@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 import { NgForm } from '@angular/forms';
@@ -12,6 +12,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
     errorMessage = '';
     successMessage = '';
+    adminselect:Boolean=false
+  subselect:Boolean=false
+  options=['admin', 'subscriber']
+  @Input()
+  username:string
+  @Input()
+  password:string
+  @Input()
+  admin:string
+  @Input()
+  Subscriber:string
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -31,5 +42,23 @@ export class LoginComponent implements OnInit {
             this.successMessage = '';
         });
 }
+hange(value:string){
+    console.log("Hello"+value);
+    if(value=="admin"){
+      this.adminselect=true;
+    }
+    else if(value=="subscriber"){
+      this.subselect=true;
+    }
+  }
+  public onSumit(){
+    if(this.adminselect){
+      this.router.navigate(['./admin'])
+    } else if(this.subselect){
+        this.router.navigate(['./subscriber'])
+      }
+  
+    }
+    
+  }
 
-}

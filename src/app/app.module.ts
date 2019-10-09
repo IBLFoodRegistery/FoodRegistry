@@ -25,7 +25,6 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
 import { environment } from 'src/environments/environment';
 
 import { HomeComponent } from './components/home/home.component';
-//import { AuthGuard } from './shared/services/auth.guard';
 
 
 

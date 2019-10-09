@@ -2,8 +2,12 @@
 # Angular files
 environment.ts
 environment.prod.ts
+<<<<<<< HEAD
 nodeJS/node_modules/
 nodeJS/package.json
+=======
+/e2e
+>>>>>>> master
 
 # compiled output
 /dist

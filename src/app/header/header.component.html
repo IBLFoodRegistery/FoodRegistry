@@ -1,9 +1,19 @@
 <div>
     <span>Header works! </span>
+<<<<<<< HEAD
     <a routerLink="">Return Home</a>
     <a routerLink="profile">profile</a>
     <div *ngIf="auth.userData | async; then loggedIn else guest"></div>
+=======
+    <a routerLink="">To Landing Page</a>
+    <div *ngIf="auth.userData; then loggedIn else guest"></div>
+>>>>>>> master
     <ng-template #loggedIn>
-        <button (click)="auth.doSignOut()">Logout</button>
-    </ng-template>    
+        <a routerLink="home">To Home Page</a>
+        <button class="btn" (click)="auth.doSignOut()">Logout</button>
+    </ng-template>
+    <ng-template #guest>
+        <button class="btn" routerLink="login">Login</button>
+        <button class="btn" routerLink="register">Register</button>
+    </ng-template>
 </div>

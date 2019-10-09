@@ -1,26 +1,23 @@
-<div *ngIf="auth.userData | async; then loggedIn else guest"></div>
+<div *ngIf="auth.userData; then loggedIn else guest"></div>
 <ng-template #loggedIn>
-    <div>
-        <div *ngIf="auth.userData | async as user">
-            <span>
-                Loggin in with
-            </span>
-            <ul>
-                <li>{{user.displayName}}</li>
-                <li>{{user.email}}</li>
-                <li>{{user.uid}}</li>
-            </ul>
-        </div>
-        
+    <div *ngIf="auth.userData as user">
+        <span>
+            Loggin in with
+        </span>
+        <ul>
+            <li>{{user.role}}</li>
+            <li>{{user.email}}</li>
+            <li>{{user.uid}}</li>
+        </ul>
     </div>
 </ng-template>
 <ng-template #guest>
     <div>
         <br>
-        <p>Landing works! Here are some shortcuts to components under development</p>
-        <ul>
-            <li><a routerLink="login">Login</a></li>
-            <li><a routerLink="register">Register</a></li>
-        </ul>
+        <p>Landing works!</p>
+        
+
+        <p>This application is currently in the development phase. Maybe we should credit the collaborators here<br>
+        and add an about page.</p>
     </div>
 </ng-template>

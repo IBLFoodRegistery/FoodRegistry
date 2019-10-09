@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
+//import { AuthGuard } from './shared/services/auth.guard';
 
 // Constants
 import { LandingComponent } from './components/landing/landing.component';
@@ -24,7 +25,10 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
 import { environment } from 'src/environments/environment';
 
 import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './shared/services/auth.guard';
+//import { AuthGuard } from './shared/services/auth.guard';
+
+
+
 
 
 
@@ -44,11 +48,11 @@ import { AuthGuard } from './shared/services/auth.guard';
         AppRoutingModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,     // imports firebase/firestore, only needed for database features
+        AngularFirestoreModule,     // imports firebase/firestore, use for firestore cloud
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
     ],
 
-    providers: [AuthService, AuthGuard],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

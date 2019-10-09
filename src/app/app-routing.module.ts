@@ -11,7 +11,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 
 // Services
-import { AuthGuard } from './shared/services/auth.guard';
 
 
 const routes: Routes = [
@@ -20,6 +19,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent, },
     { path: 'profile', component: ProfileComponent},
     { path: 'home', component: HomeComponent, },
+    { path: '**', redirectTo: ''},
 
 ];
 

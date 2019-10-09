@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   tryLogin(nf: NgForm) {
-    this.auth.doLogin(nf.value.userEmail, nf.value.userPass)
+    this.auth.doLogin(nf.value)
         .then(res => {
             console.log(res);
             this.errorMessage = '';

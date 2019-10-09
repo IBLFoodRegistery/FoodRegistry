@@ -1,3 +1,8 @@
+<div *ngIf="errorMessage.length > 0; then showError"></div>
+<ng-template #showError>
+    <span style="color: red;">{{errorMessage}}</span>
+</ng-template>
+
 <form #f="ngForm" class="form" (ngSubmit)="tryRegister(f)">
     <div class="form-group">
         <label for="userEmail">Register Email: </label>
@@ -8,8 +13,16 @@
         <input ngModel class="form-control" type="password" name="userPass" id="userPass" placeholder="Password" required>
     </div>
     <div class="form-group">
-            <label for="userRole">Role: </label>
-            <input ngModel class="form-control" type="text" name="userRole" id="userRole" placeholder="Admin/Subscriber" required>
-        </div>
+        <label for="userName">Name: </label>
+        <input ngModel class="form-control" type="text" name="userName" id="userName" placeholder="Name" required>
+    </div>
+    <div class="form-group">
+        <label for="userRole">Role: </label>
+        <select ngModel class="form-control" name="userRole" id="userRole" >
+            <option *ngFor="let role of roles">
+                {{role}}
+            </option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-success pull-right">Register</button>
 </form>

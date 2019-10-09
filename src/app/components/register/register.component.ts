@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
     errorMessage = '';
-    successMessage = '';
+    roles = ["Admin", "Subscriber"];
 
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -19,6 +19,11 @@ export class RegisterComponent implements OnInit {
     }
 
     tryRegister(nf: NgForm) {
-        this.authService.doEmailSignUp(nf.value);
+        this.authService.doRegister(nf.value)
+            .then(res => {
+                this.router.navigate(['/login']);
+            }, err => {
+                this.errorMessage = err.message;
+            });
     }
 }

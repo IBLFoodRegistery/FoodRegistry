@@ -1,17 +1,14 @@
 <div *ngIf="auth.userData; then loggedIn else guest"></div>
 <ng-template #loggedIn>
-    <div>
-        <div *ngIf="auth.userData as user">
-            <span>
-                Loggin in with
-            </span>
-            <ul>
-                <li>{{user.displayName}}</li>
-                <li>{{user.email}}</li>
-                <li>{{user.uid}}</li>
-            </ul>
-        </div>
-        
+    <div *ngIf="auth.userData as user">
+        <span>
+            Loggin in with
+        </span>
+        <ul>
+            <li>{{user.role}}</li>
+            <li>{{user.email}}</li>
+            <li>{{user.uid}}</li>
+        </ul>
     </div>
 </ng-template>
 <ng-template #guest>

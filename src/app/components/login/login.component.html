@@ -13,7 +13,7 @@
     <ng-template #showMsg>
         <span style="color: green;">Login successful!</span>
     </ng-template>
-    <form #f="ngForm" class="form" (ngSubmit)="tryLogin(f)">
+    <form #first="ngForm" class="form" (ngSubmit)="tryLogin(first)">
         <div class="form-group">
             <label for="userEmail">Login Email: </label>
             <input ngModel class="form-control" type="email" name="userEmail" id="userEmail" placeholder="Email"

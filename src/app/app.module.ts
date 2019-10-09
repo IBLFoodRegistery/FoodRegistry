@@ -16,13 +16,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './components/error/error.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
-//import { AuthGuard } from './shared/services/auth.guard';
 
 // Constants
 import { environment } from 'src/environments/environment';
+
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { environment } from 'src/environments/environment';
         LandingComponent,
         CarepackageComponent,
         HomeComponent,
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,

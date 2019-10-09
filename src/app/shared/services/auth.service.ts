@@ -12,7 +12,7 @@ class User {
     email: string;
     uid: string;
 
-    constructor(role: string, email: string, uid: string){
+    constructor(role: string, email: string, uid: string) {
         this.role = role;
         this.email = email;
         this.uid = uid;
@@ -24,27 +24,18 @@ class User {
 })
 export class AuthService {
     //userData: Observable<User>;
-    userData: User;
+    userData: User = null;
     authState: FirebaseAuth;
 
     constructor(private afAuth: AngularFireAuth,
         private afStore: AngularFirestore,
         private router: Router) {
+        this.subscribeUser();
     }
 
-    doLogin(value) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth.auth.signInWithEmailAndPassword(value.userEmail, value.userPass)
-                .then(res => {
-                    this.subscribeUser();
-                    resolve(res);
-                }, err => reject(err));
-        });
-    }
-
-    private subscribeUser(){
+    private subscribeUser() {
         this.afAuth.authState.subscribe(user => {
-            if(user){
+            if (user) {
                 this.afStore.collection('users').doc(user.uid).ref.get().then(document => {
                     let data = document.data();
                     this.userData = new User(data.role, data.email, data.uid);
@@ -54,7 +45,15 @@ export class AuthService {
                 this.userData = null;
             }
         });
-    
+    }
+
+    doLogin(value) {
+        return new Promise<any>((resolve, reject) => {
+            this.afAuth.auth.signInWithEmailAndPassword(value.userEmail, value.userPass)
+                .then(res => {
+                    resolve(res);
+                }, err => reject(err));
+        });
     }
 
     doRegister(value) {
@@ -68,8 +67,8 @@ export class AuthService {
         });
     }
 
-    private addUserCollection(res, value){
-        const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/`+ res.user.uid);
+    private addUserCollection(res, value) {
+        const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/` + res.user.uid);
 
         const data = {
             uid: res.user.uid,
@@ -86,4 +85,19 @@ export class AuthService {
         });
     }
 
+    getCurrentUser() {
+        return new Promise<any>((resolve, reject) => {
+            var user = this.afAuth.auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    resolve(user);
+                } else {
+                    reject('No user logged in');
+                }
+            });
+        });
+    }
+
+    get currentUserObservable(): any {
+        return this.afAuth.authState;
+    }
 }

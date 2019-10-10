@@ -23,8 +23,9 @@ import { AuthService } from './shared/services/auth.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
-import { AdminComponent } from './admin/admin.component';
-import { SubscriberComponent } from './subscriber/subscriber.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SubscriberComponent } from './components/subscriber/subscriber.component';
+
 
 
 

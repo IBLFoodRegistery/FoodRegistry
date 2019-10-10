@@ -7,9 +7,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminComponent } from './admin/admin.component';
-import { SubscriberComponent } from './subscriber/subscriber.component';
-
+import { AdminComponent } from './components/admin/admin.component';
+import { SubscriberComponent } from './components/subscriber/subscriber.component';
 
 // Services
 

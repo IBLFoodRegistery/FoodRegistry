@@ -7,6 +7,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,13 +18,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 //Orders
 import { OrdersComponent } from './orders/orders.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
-//import { AuthGuard } from './shared/services/auth.guard';
+import { ProfileService } from './components/profile/shared/profile.services';
 
 // Constants
 import { environment } from 'src/environments/environment';
@@ -38,9 +42,10 @@ import { environment } from 'src/environments/environment';
         LoginComponent,
         RegisterComponent,
         LandingComponent,
+        ProfileComponent,
         CarepackageComponent,
         HomeComponent,
-        OrdersComponent
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,
@@ -49,9 +54,10 @@ import { environment } from 'src/environments/environment';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, use for firestore cloud
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
+        HttpClientModule
     ],
 
-    providers: [AuthService],
+    providers: [AuthService, ProfileService, HttpClient],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

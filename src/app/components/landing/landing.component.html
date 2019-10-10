@@ -1,4 +1,7 @@
-<div *ngIf="auth.userData; then loggedIn else guest"></div>
+<div>
+        <div class="wrapper fadeInDown"  >
+                <div id="formContent">
+                    <div *ngIf="auth.userData; then loggedIn else guest"></div>
 <ng-template #loggedIn>
     <div *ngIf="auth.userData as user">
         <span>
@@ -21,3 +24,10 @@
         </ul>
     </div>
 </ng-template>
+<div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+     </div>
+     </div>
+    
+    </div>

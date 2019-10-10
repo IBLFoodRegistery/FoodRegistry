@@ -6,19 +6,33 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { Profile } from '../profile';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Injectable()
 export class ProfileService {
   selectedProfile: Profile;
+  authService: AuthService;
+
   readonly baseURL = 'http://localhost:3000/profiles';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+  }
+
 
   getProfileList() {
     return this.http.get(this.baseURL);
   }
+
+  postUser(newUser: any){
+    this.selectedProfile.uid =  this.authService.userData.uid;
+    this.selectedProfile.displayName = newUser.userName;
+    this.selectedProfile.email = newUser.userEmail;
+    this.selectedProfile.role = newUser.userRole;
+    return this.http.post('http://localhost:3000/Users/addUser', this.selectedProfile);
+  }
 /*
-  postEmployee(pro: Profile) {
+  postUser(pro: Profile) {
     return this.http.post(this.baseURL, pro);
   }
 

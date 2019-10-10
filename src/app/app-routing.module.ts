@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent, },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'error', component: ErrorComponent },
+    { path: 'profile', component: ProfileComponent},
     { path: '**', redirectTo: ''},
 
 ];

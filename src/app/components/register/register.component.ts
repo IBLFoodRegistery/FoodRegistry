@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { NgForm, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from '../profile/shared/profile.services';
+import { Profile } from '../profile/profile';
 
 @Component({
     selector: 'app-register',
@@ -11,6 +12,7 @@ import { ProfileService } from '../profile/shared/profile.services';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+    selectedProfile: Profile;
     errorMessage = '';
     roles = ["Admin", "Subscriber"];
 
@@ -22,9 +24,6 @@ export class RegisterComponent implements OnInit {
     tryRegister(nf: NgForm) {
         this.authService.doRegister(nf.value)
             .then(res => {
-                this.profileService.postUser(nf.value).subscribe((res) => {
-                    console.log("saved successfully ");
-                  });
                 this.router.navigate(['/login']);
             }, err => {
                 this.errorMessage = err.message;

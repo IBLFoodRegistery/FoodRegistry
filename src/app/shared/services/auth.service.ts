@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { FirebaseAuth } from '@angular/fire';
+import { Profile } from 'src/app/components/profile/profile';
+import { ProfileService } from 'src/app/components/profile/shared/profile.services';
 
 
 
@@ -15,6 +17,7 @@ class User {
 
     constructor(role: string, userName: string, email: string, uid: string) {
         this.role = role;
+        this.userName = userName;
         this.email = email;
         this.uid = uid;
     }
@@ -30,7 +33,8 @@ export class AuthService {
 
     constructor(private afAuth: AngularFireAuth,
         private afStore: AngularFirestore,
-        private router: Router) {
+        private router: Router,
+        private profileService : ProfileService) {
         this.subscribeUser();
     }
 
@@ -99,7 +103,18 @@ export class AuthService {
             uid: res.user.uid,
         };
 
-        userRef.set(data, { merge: true });
+        userRef.set(data, { merge: true }).then(res2 => {
+            this.addtoMongo(data)
+        });
+    }
+
+    addtoMongo(data: any){
+        let selectedProfile = new Profile(data.uid, data.userName, data.role, data.email, "", "", "");
+        console.log(selectedProfile);
+
+        this.profileService.postUser(selectedProfile).subscribe((res) => {
+            console.log("saved successfully ");
+          });
     }
 
     doSignOut() {

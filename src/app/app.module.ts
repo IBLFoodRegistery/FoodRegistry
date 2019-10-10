@@ -27,10 +27,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { SubscriberComponent } from './components/subscriber/subscriber.component';
 
 
-
-
-
-
 @NgModule({
     declarations: [
         AppComponent,

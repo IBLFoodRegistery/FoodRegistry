@@ -21,11 +21,7 @@ export class ProfileService {
     }
 
     postUser(newUser: any) {
-        this.selectedProfile.uid = this.authService.userData.uid;
-        this.selectedProfile.displayName = newUser.userName;
-        this.selectedProfile.email = newUser.userEmail;
-        this.selectedProfile.role = newUser.userRole;
-        return this.http.post('http://localhost:3000/Users/addUser', this.selectedProfile);
+        return this.http.post('http://localhost:3000/Users/addUser', newUser);
     }
     /*
       postUser(pro: Profile) {

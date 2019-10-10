@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
   tryLogin(nf: NgForm) {
     this.auth.doLogin(nf.value)
         .then(res => {
-          if(this.auth.userData.role=="Admin"){
+          if(this.auth.userData.role==="Admin"){
             this.router.navigate(['/admin'])
             console.log(res);
             this.errorMessage = '';
             this.successMessage = 'Logging In!';
             this.router.navigate(['/admin']);
           }
-          else if(this.auth.userData.role=="Subscriber"){
+          else if(this.auth.userData.role==="Subscriber"){
             this.router.navigate(['/subcriber'])
             console.log(res);
             this.errorMessage = '';

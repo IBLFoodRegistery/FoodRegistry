@@ -8,19 +8,27 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
              
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
+              <div *ngIf="auth.userData; then loggedIn else guest"></div>
+              <ng-template #loggedIn>
                     <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" routerLink="landing">Home</a>
                           </li>
+                          <li class="nav-item">
+                              <a class="nav-link js-scroll-trigger" routerLink="landing" (click)="auth.doSignOut()">Logout</a>
+                            </li>
+                        </ng-template>
+                        <ng-template #guest>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" routerLink="login">Login</a>
               </li>
+              <!-- <div *ngIf="auth.userData.role ==='admin'">
+              <app-admin></app-admin>
+            </div>
+            <div *ngIf="auth.userdata.role==='subscriber'"><app-subscriber></app-subscriber></div> -->
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" routerLink="register">Register</a>
               </li>
-              
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" routerLink="landing" (click)="auth.doSignOut()">Logout</a>
-              </li>
+            </ng-template>
             </ul>
           </div>
         </div>

@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
 import { Food } from './food.model';
 
@@ -14,7 +11,7 @@ export class FoodService {
 
   selectedFood: Food;
   foods: Food[];
-  readonly baseURL = 'http://localhost:7000/foods';
+  readonly baseURL = 'http://localhost:3000/foods';
 
 
   constructor(private http: HttpClient) { }

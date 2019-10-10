@@ -25,10 +25,9 @@ export class ProfileComponent implements OnInit {
     }
 
     loadProfile(user) {
-      console.log(user);
       this.profileService.getProfile(user.uid).subscribe((res) => {
-        this.profile = res as Profile;
-        console.log(res);
+      this.profile = res as Profile;
+      console.log(this.profile);
 
       });
     }

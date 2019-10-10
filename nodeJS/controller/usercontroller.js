@@ -14,12 +14,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
-
-        User.findOne({ _id: req.params.id}, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Retriving User :' + JSON.stringify(err, undefined, 2)); }
+    User.findOne({ _id: req.params.id}).then(doc => {
+            if (doc) { res.send(doc); }
+            else { console.log(`Error in Retriving User : ${req.params.id}`) }
     });
 });
 

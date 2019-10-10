@@ -10,37 +10,27 @@
               <figure>
                 <img src="" alt="" class="img-circle" style="width:75px;" id="user-img">
               </figure>
-              <div *ngIf="auth.userData as user">
-                <span>
-                    Loggin in with
-                </span>
-                <ul>
-                    <li>{{user.role}}</li>
-                    <li>{{user.email}}</li>
-                    <li>{{user.uid}}</li>
-                </ul>
-            </div>
-              <!--<h5 style="text-align:center;"><strong id="user-name">{{profile.userName}}</strong></h5>-->
-             <!--  <label style="text-align:center;font-size: smaller;overflow-wrap: break-word;" for="user-email">Email</label>
+              <h5 style="text-align:center;"><strong id="user-name">{{profile.name}}</strong></h5>
+             <label style="text-align:center;font-size: smaller;overflow-wrap: break-word;" for="user-email">Email</label>
               <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email">{{profile.email}} </p>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
                 <label> Family Members </label>
-                <li *ngFor="let Family of Profile.familyMembers">
+                <li *ngFor="let Family of profile.familyMembers">
                   {{ Family | json}} 
                 </li>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
                 <label>Care Packages</label>
-                <li *ngFor="let cp of Profile.carePackage">
+                <li *ngFor="let cp of profile.carePackage">
                     {{ cp | json}} 
                 </li>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
                 <label>Food Packages</label>
-                <li *ngFor="let fp of Profile.foodPackage">
+                <li *ngFor="let fp of profile.foodPackage">
                     {{ fp | json}} 
                 </li>
-              </div> -->
+              </div> 
            </div>
           </div>
         </div>

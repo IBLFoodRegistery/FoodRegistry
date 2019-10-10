@@ -9,8 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  Profile = new Profile('test', 1, 'test@email.com', 3, 0, 0);
-  user : any;
+  private user : any;
   userID : string;
 
   constructor(public auth: AuthService) { 

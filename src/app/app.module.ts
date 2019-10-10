@@ -25,6 +25,8 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
 import { environment } from 'src/environments/environment';
 
 import { HomeComponent } from './components/home/home.component';
+import { ProfileService } from './components/profile/shared/profile.services';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -49,9 +51,10 @@ import { HomeComponent } from './components/home/home.component';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, use for firestore cloud
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
+        HttpClientModule 
     ],
 
-    providers: [AuthService],
+    providers: [AuthService, ProfileService, HttpClient],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

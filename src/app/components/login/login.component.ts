@@ -34,14 +34,22 @@ export class LoginComponent implements OnInit {
         .then(res => {
           if(this.auth.userData.role=="Admin"){
             this.router.navigate(['/admin'])
-          }
-          else if(this.auth.userData.role=="Subscriber"){
-            this.router.navigate(['/subcriber'])
-          }
             console.log(res);
             this.errorMessage = '';
             this.successMessage = 'Logging In!';
-            this.router.navigate(['/home']);
+            this.router.navigate(['/admin']);
+          }
+          else if(this.auth.userData.role=="Subscriber"){
+            this.router.navigate(['/subcriber'])
+            console.log(res);
+            this.errorMessage = '';
+            this.successMessage = 'Logging In!';
+            this.router.navigate(['/subcriber']);
+          }
+            // console.log(res);
+            // this.errorMessage = '';
+            // this.successMessage = 'Logging In!';
+            // this.router.navigate(['/home']);
         }, err => {
             console.log(err);
             this.errorMessage = err.message;

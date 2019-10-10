@@ -27,8 +27,11 @@ router.post("/addUser", (req, res) => {
     var usr = new User({
         uid: req.body.uid,
         name: req.body.userName,
-        email: req.body.userEmail,
-        role: req.body.userRole
+        email: req.body.email,
+        role: req.body.role,
+        familyMembers: req.body.familyMembers,
+        foodPackage: req.body.foodPackage,
+        carePackage: req.body.carePackage,
     });
     usr.save((err, doc) => {
         if (!err) { res.send(doc); }

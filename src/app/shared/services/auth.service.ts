@@ -17,6 +17,7 @@ class User {
 
     constructor(role: string, userName: string, email: string, uid: string) {
         this.role = role;
+        this.userName = userName;
         this.email = email;
         this.uid = uid;
     }
@@ -30,9 +31,10 @@ export class AuthService {
     userData: User = null;
     authState: FirebaseAuth;
 
-    constructor(private profileService : ProfileService, private afAuth: AngularFireAuth,
+    constructor(private afAuth: AngularFireAuth,
         private afStore: AngularFirestore,
-        private router: Router) {
+        private router: Router,
+        private profileService : ProfileService) {
         this.subscribeUser();
     }
 
@@ -101,13 +103,14 @@ export class AuthService {
             uid: res.user.uid,
         };
 
-        userRef.set(data, { merge: true }).then(res => {
+        userRef.set(data, { merge: true }).then(res2 => {
             this.addtoMongo(data)
         });
     }
 
     addtoMongo(data: any){
         let selectedProfile = new Profile(data.uid, data.userName, data.role, data.email, "", "", "");
+        console.log(selectedProfile);
 
         this.profileService.postUser(selectedProfile).subscribe((res) => {
             console.log("saved successfully ");

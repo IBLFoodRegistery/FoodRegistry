@@ -33,6 +33,12 @@ export class AuthService {
         this.subscribeUser();
     }
 
+    /*
+        initialize userData with data from a user's corresponding firestore document.
+        
+        Does subscribing to auth state allow for user data to change when the firestore document changes
+         during the user session? If not, use getCurrentuser() to update userData instead
+    */
     private subscribeUser() {
         this.afAuth.authState.subscribe(user => {
             if (user) {
@@ -44,6 +50,21 @@ export class AuthService {
                 console.log('you were logged out');
                 this.userData = null;
             }
+        });
+    }
+
+    /*
+        Use to validate if a user is logged in
+    */
+    getCurrentUser() {
+        return new Promise<any>((resolve, reject) => {
+            let user = this.afAuth.auth.onAuthStateChanged((user) => {
+                if (user) {
+                    resolve(user);
+                } else {
+                    reject('No user logged in');
+                }
+            });
         });
     }
 
@@ -82,18 +103,6 @@ export class AuthService {
     doSignOut() {
         this.afAuth.auth.signOut().then(() => {
             this.router.navigate(['/']);
-        });
-    }
-
-    getCurrentUser() {
-        return new Promise<any>((resolve, reject) => {
-            let user = this.afAuth.auth.onAuthStateChanged((user) => {
-                if (user) {
-                    resolve(user);
-                } else {
-                    reject('No user logged in');
-                }
-            });
         });
     }
 

@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
 var User = mongoose.model('User',  {
-    uid: { type: String },
-    name: { type: String },
-    email: { type: String },
+    _id: { type: String },
+    userName: { type: String },
     role: { type: String },
+    email: { type: String },
     familyMembers: { type: String},
+    carePackage: { type: String },
     foodPackage: { type: String },
-    carePackage: { type: String }
 })
 
 module.exports = { User };
+
+

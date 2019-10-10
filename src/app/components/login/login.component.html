@@ -1,15 +1,14 @@
 <div>
     <div class="wrapper fadeInDown">
         <div id="formContent">
-
-            <div *ngIf="auth.userData; then loggedIn else guest"></div>
+            <div *ngIf="auth.userData | async; then loggedIn else guest"></div>
             <ng-template #loggedIn>
                 <h1>You're already logged in!</h1>
             </ng-template>
             <ng-template #guest>
                 <div *ngIf="errorMessage.length > 0; then showError else noError"></div>
                 <ng-template #showError>
-                    <span style="color: red;">Invalid Login!</span>
+                    <span style="color: red; font-size: large">Invalid Login!</span>
                 </ng-template>
                 <div *ngIf="successMessage.length > 0; then showMsg else noMsg"></div>
                 <ng-template #showMsg>
@@ -22,7 +21,7 @@
                 </div>
                 <form #f="ngForm" class="form" (ngSubmit)="tryLogin(f)" (click)="onSumit()">
                     <div class="form-group">
-                        <h4 style="color:teal"><b>Home to many Food and Care Packages</b></h4>
+                        <h4 style="color:teal"><b style="font-size: large">Home to many Food and Care Packages</b></h4>
                         <p><b>Login Page</b></p>
 
                         <label for="userEmail">Email: </label>
@@ -37,9 +36,13 @@
                     <button type="submit" class="btn btn-success">Login</button>
                 </form>
             </ng-template>
+            <router-outlet></router-outlet>
+
             <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
             </div>
         </div>
     </div>
+
+
 </div>

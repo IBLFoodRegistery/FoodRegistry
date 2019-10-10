@@ -6,6 +6,10 @@ body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
   background-color: lightcyan;
+  font-size: 15px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.42857143;
+  color: #333;
 }
 
 a {
@@ -45,7 +49,7 @@ h2 {
   background: #fff;
   padding: 30px;
   width: 90%;
-  max-width: 650px;
+  max-width: 550px;
   position: relative;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -256,7 +260,7 @@ input[type=text]:placeholder {
 } 
 
 #icon {
-  width:60%;
+  width:25%;
 }
 
 * {

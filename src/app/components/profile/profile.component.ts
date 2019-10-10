@@ -9,23 +9,26 @@ import { AuthService } from 'src/app/shared/services/auth.service';
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+    profile : Profile;
     private user: any;
     userID: string;
+    currentUser : any;
 
-    constructor(public auth: AuthService) {
+    constructor(private auth: AuthService, private profileService: ProfileService) {
 
     }
 
     ngOnInit() {
-        // this.loadProfile();
-        this.user = this.auth.userData;
-        this.userID = this.user.uid;
+      this.auth.getCurrentUser().then(user =>{
+        this.loadProfile(user);
+      })
     }
 
-    // loadProfile() {
-    //   this.profileService.getProfileList().subscribe((res) => {
-    //     this.profileService.selectedProfile = res as Profile;
+    loadProfile(user) {
+      this.profileService.getProfile(user.uid).subscribe((res) => {
+      this.profile = res as Profile;
+      console.log(this.profile);
 
-    //   });
-    // }
+      });
+    }
 }

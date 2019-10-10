@@ -9,8 +9,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { SubscriberComponent } from './components/subscriber/subscriber.component';
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';

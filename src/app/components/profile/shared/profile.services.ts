@@ -9,15 +9,13 @@ export class ProfileService {
     selectedProfile: Profile;
     authService: AuthService;
 
-    readonly baseURL = 'http://localhost:3000/profiles';
-
     constructor(private http: HttpClient) {
 
     }
 
 
-    getProfileList() {
-        return this.http.get(this.baseURL);
+    getProfile(uid: String) {
+      return this.http.get('http://localhost:3000/Users' + `/${uid}`);
     }
 
     postUser(newUser: any) {

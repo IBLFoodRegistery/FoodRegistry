@@ -9,10 +9,11 @@ import { FirebaseAuth } from '@angular/fire';
 
 class User {
     role?: string;
+    userName: string;
     email: string;
     uid: string;
 
-    constructor(role: string, email: string, uid: string) {
+    constructor(role: string, userName: string, email: string, uid: string) {
         this.role = role;
         this.email = email;
         this.uid = uid;
@@ -44,8 +45,8 @@ export class AuthService {
             if (user) {
                 this.afStore.collection('users').doc(user.uid).ref.get().then(document => {
                     let data = document.data();
-                    this.userData = new User(data.role, data.email, data.uid);
-                })
+                    this.userData = new User(data.role, data.userName, data.email, data.uid);
+                });
             } else {
                 console.log('you were logged out');
                 this.userData = null;
@@ -92,9 +93,10 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/` + res.user.uid);
 
         const data = {
-            uid: res.user.uid,
-            email: value.userEmail,
             role: value.userRole,
+            userName: value.userName,
+            email: value.userEmail,
+            uid: res.user.uid,
         };
 
         userRef.set(data, { merge: true });

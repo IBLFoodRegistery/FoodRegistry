@@ -20,8 +20,6 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { SubscriberComponent } from './components/subscriber/subscriber.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
@@ -29,8 +27,6 @@ import { ProfileService } from './components/profile/shared/profile.services';
 
 // Constants
 import { environment } from 'src/environments/environment';
-
-
 
 @NgModule({
     declarations: [

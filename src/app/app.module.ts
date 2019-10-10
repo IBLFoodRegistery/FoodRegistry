@@ -17,6 +17,9 @@ import { LandingComponent } from './components/landing/landing.component';
 import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
 
+//Orders
+import { OrdersComponent } from './orders/orders.component';
+
 // Services
 import { AuthService } from './shared/services/auth.service';
 //import { AuthGuard } from './shared/services/auth.guard';
@@ -36,7 +39,8 @@ import { environment } from 'src/environments/environment';
         RegisterComponent,
         LandingComponent,
         CarepackageComponent,
-        HomeComponent
+        HomeComponent,
+        OrdersComponent
     ],
     imports: [
         BrowserModule,

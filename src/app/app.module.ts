@@ -51,7 +51,7 @@ import { environment } from 'src/environments/environment';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,     // imports firebase/firestore, use for firestore cloud
         AngularFireAuthModule,      // imports firebase/auth, only needed for auth features
-        HttpClientModule 
+        HttpClientModule
     ],
 
     providers: [AuthService, ProfileService, HttpClient],

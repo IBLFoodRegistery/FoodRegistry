@@ -4,28 +4,28 @@ import { ProfileService } from './shared/profile.services';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  private user : any;
-  userID : string;
+    private user: any;
+    userID: string;
 
-  constructor(public auth: AuthService) { 
-  
-  }
+    constructor(public auth: AuthService) {
 
-  ngOnInit() {
-   // this.loadProfile();
-    this.user = this.auth.userData;
-    this.userID = this.user.uid;
-  }
+    }
 
-  // loadProfile() {
-  //   this.profileService.getProfileList().subscribe((res) => {
-  //     this.profileService.selectedProfile = res as Profile;
-      
-  //   });
- // }
+    ngOnInit() {
+        // this.loadProfile();
+        this.user = this.auth.userData;
+        this.userID = this.user.uid;
+    }
+
+    // loadProfile() {
+    //   this.profileService.getProfileList().subscribe((res) => {
+    //     this.profileService.selectedProfile = res as Profile;
+
+    //   });
+    // }
 }

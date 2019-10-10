@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
 // components
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,6 +9,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SubscriberComponent } from './components/subscriber/subscriber.component';
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';

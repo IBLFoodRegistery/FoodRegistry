@@ -1,18 +1,6 @@
 <div>
     <div class="wrapper fadeInDown"  >
             <div id="formContent">
-                    <!-- <div class="wrapper fadeInDown" *ngIf="!isUserLogined" *ngIf="status==2 then admin">
-                            <div id="formContent">
-                                    <ng-template #login><app-login></app-login>></ng-template>
-                                    <ng-template #admin><app-admin></app-admin></ng-template> -->
-    
-              <!-- Tabs Titles -->
-              <!-- <ul>
-                  <li><a href="#">Admin Login</a></li>
-                  <li><a href="#">Subscriber Login</a></li>
-              </ul> -->
-             
-              <!-- Icon -->
 <div *ngIf="auth.userData | async; then loggedIn else guest"></div>
 <ng-template #loggedIn>
     <h1>You're already logged in!</h1>
@@ -47,43 +35,13 @@
                 <button type="submit" class="btn btn-success">Login</button>
             </form>
         </ng-template>
-       
-        <!-- <form>
-                <div>
-                        <p><b>Home to many Healthy Food and Care Packages</b></p>
-                  </div>
-            <div> -->
-                <!-- <label>Username:</label>
-                <input type="text" ngModel  required name="username" placeholder="username" class="form-control"/><br>
-                <label>Password:</label>
-                <input type="text" ngModel  required name="password" placeholder="password" class="form-control"/><br>
-                <label>Login as:</label>
-                <select ngModel (ngModelChange)="change($event)" [ngModelOptions]="{standalone: true}">
-                    <option *ngFor="let value of options" [ngValue]="value">{{value}}</option> -->
-                    <!-- <div *ngIf="value==='Admin'">
-                            <a routerLink="admin">Admin</a>
-                        </div> -->
-                    <!-- <option>Subscriber</option> -->
-                    <!-- <div *ngIf="value==='Subcriber'">
-                            <a routerLink="subscriber">Subscriber</a>
-                        </div> -->
-                <!-- </select><br>
-                <br>
-                <button type="submit" (click)="onSumit()" >Login</button> -->
-                <!-- <div *ngIf="name==admin; then show; else noshow"></div>
-                <ng-template #show><a routerLink="admin"></a></ng-template>
-                <ng-template #noshow><a routerLink="subcriber"></a></ng-template> -->
                 <router-outlet></router-outlet>
-            <!-- </div>
-        </form> -->
         
         <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password?</a>
           </div>
          </div>
          </div>
-        
-        </div>
-        
-        
-        
+     
+
+</div>

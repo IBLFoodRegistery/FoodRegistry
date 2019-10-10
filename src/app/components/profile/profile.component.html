@@ -1,0 +1,43 @@
+<title>Profile Page</title>
+
+<div class="container">
+	<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 2px;">
+          <div class="well profile col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+              <figure>
+                <img src="" alt="" class="img-circle" style="width:75px;" id="user-img">
+              </figure>
+              <h5 style="text-align:center;"><strong id="user-name">{{Profile.displayName}}</strong></h5>
+              <label style="text-align:center;font-size: smaller;" for="user-frid"> ID </label>
+              <p style="text-align:center;font-size: smaller;" id="user-frid">{{Profile.uid}}
+              {{ user.uid }} {{ userID }}</p>
+              <label style="text-align:center;font-size: smaller;overflow-wrap: break-word;" for="user-email">Email</label>
+              <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email">{{Profile.email}} </p>
+           <!--  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
+                <label> Family Members </label>
+                <li *ngFor="let Family of Profile.familyMembers">
+                  {{ Family | json}} 
+                </li>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
+                <label>Care Packages</label>
+                <li *ngFor="let cp of Profile.carePackage">
+                    {{ cp | json}} 
+                </li>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
+                <label>Food Packages</label>
+                <li *ngFor="let fp of Profile.foodPackage">
+                    {{ fp | json}} 
+                </li>
+              </div> -->
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>

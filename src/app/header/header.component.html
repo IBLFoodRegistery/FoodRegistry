@@ -11,7 +11,7 @@
               <div *ngIf="auth.userData; then loggedIn else guest"></div>
               <ng-template #loggedIn>
                     <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" routerLink="landing">Home</a>
+                            <a class="nav-link js-scroll-trigger" routerLink="landing" style="font-size: large">Home</a>
                           </li>
                           
                             <div *ngIf="auth.userData.role ==='Admin'; then Admin else noAdmin"></div>
@@ -33,6 +33,9 @@
                             </li>
                         </ng-template>
                         <ng-template #guest>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" routerLink="landing">Home</a>
+                              </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" routerLink="login">Login</a>
               </li>

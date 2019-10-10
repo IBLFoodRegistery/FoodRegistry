@@ -8,6 +8,12 @@ body {
   background-color: lightcyan;
 }
 
+.shape
+{
+  font-size: large;
+  font-size: 20px;
+  color: teal;
+}
 a {
   color: #92badd;
   display:inline-block;
@@ -256,7 +262,7 @@ input[type=text]:placeholder {
 } 
 
 #icon {
-  width:60%;
+  width:40%;
 }
 
 * {

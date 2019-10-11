@@ -15,10 +15,6 @@ import { CareComponent } from './components/care/care.component';
 // Services
 import { AuthGuard } from './shared/services/auth.guard';
 
-
-
-
-
 const routes: Routes = [
     { path: '', component: LandingComponent, pathMatch: 'full' },
     { path: 'login', component: LoginComponent, },

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 
 import { Food } from 'src/app/shared/food.model';
 import { FoodService } from 'src/app/shared/food.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 
 declare var M: any;
@@ -16,11 +17,15 @@ declare var M: any;
 })
 export class FoodComponent implements OnInit {
 
-    constructor(private foodService: FoodService) { }
+    constructor(private foodService: FoodService, private auth: AuthService) { }
 
     ngOnInit() {
         this.resetForm();
         this.refreshFoodList();
+    }
+
+    getRole() {
+        return this.auth.userData.role;
     }
 
     resetForm(form?: NgForm) {

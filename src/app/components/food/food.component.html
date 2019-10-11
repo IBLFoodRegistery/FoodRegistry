@@ -1,47 +1,81 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
 <div class="row">
     <div class="col s12">
         <div class="card">
             <div class="card-content white-text">
-                <div class="row">
-                    <div class="col s5">
-                        <form #foodForm="ngForm" (ngSubmit)="onSubmit(foodForm)">
-                            <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="foodService.selectedFood._id">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" name="name" required #name="ngModel"
-                                        [(ngModel)]="foodService.selectedFood.name" placeholder="Enter Food name">
+                <div *ngIf="getRole() === 'Admin'; then Admin else noAdmin"></div>
+                <ng-template #Admin>
+                    <div class="row">
+                        <div class="col s5">
+                            <form #foodForm="ngForm" (ngSubmit)="onSubmit(foodForm)">
+                                <input type="hidden" name="_id" #name="ngModel"
+                                    [(ngModel)]="foodService.selectedFood._id">
+                                    <div class="input-field col s12">
+                                        <input type="text" name="name" required #name="ngModel"
+                                            [(ngModel)]="foodService.selectedFood.name" placeholder="Enter Food name">
+                                    </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="number" name="quantity" #name="ngModel"
+                                            [(ngModel)]="foodService.selectedFood.quantity"
+                                            placeholder="Enter Quantity">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="number" name="quantity" #name="ngModel"
-                                        [(ngModel)]="foodService.selectedFood.quantity" placeholder="Enter Quantity">
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" name="description" #name="ngModel"
-                                        [(ngModel)]="foodService.selectedFood.description"
-                                        placeholder="Enter description ">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="text" name="description" #name="ngModel"
+                                            [(ngModel)]="foodService.selectedFood.description"
+                                            placeholder="Enter description ">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <button class="btn btn-custom right" type="button"
-                                        (click)="resetForm(foodForm)">Reset</button>
-                                    <button class="btn btn-custom right" type="submit"
-                                        [disabled]="!foodForm.valid">Submit</button>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <button class="btn btn-custom right" type="button"
+                                            (click)="resetForm(foodForm)">Reset</button>
+                                        <button class="btn btn-custom right" type="submit"
+                                            [disabled]="!foodForm.valid">Submit</button>
+                                    </div>
                                 </div>
+                            </form>
+                            <div class="col s7">
+                                <table class="responsive-table highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Description</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tr *ngFor="let food of foodService.foods">
+                                        <td>{{food.name}}</td>
+                                        <td>{{food.quantity}}</td>
+                                        <td>{{food.description}}</td>
+                                        <td>
+                                            <a class="action-btn" (click)="onEdit(food)">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                            <a class="action-btn" (click)="onDelete(food._id,foodForm)">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
-
-                        </form>
+                        </div>
                     </div>
-                    <div class="col s7">
+                </ng-template>
+                <div *ngIf="getRole() === 'Subscriber'; then subscriber else noSub"></div>
+                <ng-template #subscriber>
+                    <div class="row">
+                        <div>
+                            Add subscriber stuff here, or make a different component instead
+                        </div>
                         <table class="responsive-table highlight">
                             <thead>
                                 <tr>
@@ -56,17 +90,12 @@
                                 <td>{{food.quantity}}</td>
                                 <td>{{food.description}}</td>
                                 <td>
-                                    <a class="action-btn" (click)="onEdit(food)">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                    <a class="action-btn" (click)="onDelete(food._id,foodForm)">
-                                        <i class="material-icons">delete</i>
-                                    </a>
+                                    add buttons here
                                 </td>
                             </tr>
                         </table>
                     </div>
-                </div>
+                </ng-template>
             </div>
         </div>
     </div>

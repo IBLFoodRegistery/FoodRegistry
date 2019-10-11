@@ -20,6 +20,8 @@ import { CarepackageComponent } from './components/carepackage/carepackage.compo
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FoodComponent } from './food/food.component';
+import { CareComponent } from './care/care.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
@@ -39,6 +41,8 @@ import { environment } from 'src/environments/environment';
         CarepackageComponent,
         HomeComponent,
         ErrorComponent,
+        FoodComponent,
+        CareComponent,
     ],
     imports: [
         BrowserModule,

@@ -13,13 +13,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" routerLink="landing" style="font-size: large">Home</a>
                     </li>
-<<<<<<< HEAD
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="profile">Update
-                        Profile</a></li>
-                    <div *ngIf="auth.userData.role === 'Admin'; then Admin else noAdmin"></div>
-=======
                     <div *ngIf="getRole() === 'Admin'; then Admin else noAdmin"></div>
->>>>>>> scott-dev
                     <ng-template #Admin>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="profile">Update
                                 Profile</a></li>

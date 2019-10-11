@@ -26,22 +26,21 @@ export class CareComponent implements OnInit {
         if (form)
             form.reset();
         this.careService.selectedCare = {
-            _id: "",
-            name: "",
+            _id: '',
+            name: '',
             quantity: null,
-            description: ""
+            description: ''
 
         }
     }
     onSubmit(form: NgForm) {
-        if (form.value._id == "") {
+        if (form.value._id === '') {
             this.careService.postCare(form.value).subscribe((res) => {
                 this.resetForm(form);
                 this.refreshCareList();
                 M.toast({ html: 'Saved successfully', classes: 'rounded' });
             });
-        }
-        else {
+        } else {
             this.careService.putCare(form.value).subscribe((res) => {
                 this.resetForm(form);
                 this.refreshCareList();

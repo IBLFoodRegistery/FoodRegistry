@@ -10,7 +10,7 @@ import { ProfileService } from 'src/app/components/profile/shared/profile.servic
 
 
 class User {
-    role: string;
+    role?: string;
     userName: string;
     email: string;
     uid: string;
@@ -104,7 +104,7 @@ export class AuthService {
         };
 
         userRef.set(data, { merge: true }).then(res2 => {
-            this.addtoMongo(data)
+            this.addtoMongo(data);
         });
     }
 

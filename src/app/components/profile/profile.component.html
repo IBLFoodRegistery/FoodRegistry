@@ -16,6 +16,8 @@
                 for="user-email">Email:</label>
             <p style="text-align:center;font-size: smaller;overflow-wrap: break-word; font-size: medium"
                 id="user-email">{{profile.email}} </p>
+            <div *ngIf="getRole() === 'Admin'; then Admin else subscriber"></div>
+            <ng-template #subscriber>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">
                 <label style="font-size: medium"> Family Members </label>
                 <li *ngFor="let Family of profile.familyMembers" style="font-size: medium">
@@ -34,6 +36,7 @@
                     {{ fp | json}}
                 </li>
             </div>
+          </ng-template>
         </form>
 
     </div>

@@ -18,30 +18,30 @@
                     </ul>
                 </div>
             </ng-template>
-                <div *ngIf="auth.userData.role === 'Admin'; then Admin else noAdmin"></div>
-                <div *ngIf="auth.getRole() === 'Admin'; then Admin else noAdmin"></div>
-                    <ng-template #Admin>
-                        <a routerLink="profile">Update Profile</a><br>
-                       <a routerLink="registerFood">Register Food Packages</a><br>
-                        <a routerLink="registerCare">Register Care Packages</a>
-                    </ng-template>
-                    <div *ngIf="auth.getRole() === 'Subscriber'; then subscriber else noSub"></div>
-                    <ng-template #subscriber>
-                        <a routerLink="profile">Update Profile</a><br>
-                        <a routerLink="registerFood">Subscribe Food Packages</a><br>
-                        <a routerLink="">Subscribe Care Packages</a>
-                    </ng-template>
+            <div *ngIf="auth.userData.role === 'Admin'; then Admin else noAdmin"></div>
+            <div *ngIf="auth.getRole() === 'Admin'">
+                <a routerLink="profile">Update Profile</a><br>
+                <a routerLink="registerFood">Register Food Packages</a><br>
+                <a routerLink="registerCare">Register Care Packages</a>
+            </div>
+            <div *ngIf="auth.getRole() === 'Subscriber'">
+                <a routerLink="profile">Update Profile</a><br>
+                <a routerLink="registerFood">Subscribe Food Packages</a><br>
+                <a routerLink="registerCare">Subscribe Care Packages</a>
+            </div>
             <ng-template #guest>
                 <div>
                     <br>
                     <p style="font-size: x-large"><b style="color: teal">HOWDYY !!!</b></p>
                     <p style="font-size:medium">This page is all about your health and care.</p>
-                    <p style="font-size:medium">This will help you gettimg the best food packages and care packages <br>which will help you
+                    <p style="font-size:medium">This will help you gettimg the best food packages and care packages
+                        <br>which will help you
                         kepping yourself healthy and stay happy.</p>
                     <p style="font-size:medium"><b style="color:teal">Go ahead and register yourself !!</b></p>
-                    <a style="font-size:medium" routerLink="register">Register</a><br>
-                    <a style="font-size:medium" routerLink="login">Login</a>
-                    <p style="font-size:medium">You can either create your own packages<br> or just subscribe for the one that we have for you.
+                    <!-- <a style="font-size:medium" routerLink="register">Register</a><br>
+                    <a style="font-size:medium" routerLink="login">Login</a> -->
+                    <p style="font-size:medium">You can either create your own packages<br> or just subscribe for the
+                        one that we have for you.
                     </p>
                     <p style="font-size:medium"><b style="color: teal">Welcome</b></p>
                 </div>

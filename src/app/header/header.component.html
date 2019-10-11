@@ -1,13 +1,77 @@
-<div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <!-- <a class="navbar-brand js-scroll-trigger" href="#">HOWDY !!!</a> -->
+        <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <div *ngIf="auth.userData; then loggedIn else guest"></div>
+                <ng-template #loggedIn>
+                    <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" routerLink="landing" style="font-size: large">Home</a>
+                          </li>
+                          
+                            <div *ngIf="auth.userData.role ==='Admin'; then Admin else noAdmin"></div>
+                            <ng-template #Admin>
+                            
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="login">Update Profile</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Register Food Packages</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Register Care Packages</a></li>
+                           
+                          </ng-template>
+                        <div *ngIf="auth.userdata.role==='Subscriber'; then subscriber else noSub"></div>
+                        <ng-template #subscriber>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="login">Update Profile</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Subscribe for Food Packages</a></li>
+                                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Subscribe for Care Packages</a></li>
+                          </ng-template>
+                          <li class="nav-item">
+                              <a class="nav-link js-scroll-trigger" routerLink="landing" (click)="auth.doSignOut()">Logout</a>
+                            </li>
+                        </ng-template>
+                        <ng-template #guest>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" routerLink="landing">Home</a>
+                              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" routerLink="login">Login</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" routerLink="register">Register</a>
+              </li>
+            </ng-template>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- <section class="page-section bg-primary" id="logout">
+            <div *ngIf="auth.userData; then loggedIn else guest"></div>
+            <ng-template #loggedIn>
+                <a routerLink="home">To Home Page</a>
+                <button class="btn" (click)="auth.doSignOut()">Logout</button>
+            </ng-template>
+      </section>  -->
+
+
+
+
+<!-- <div>
     <span>Header works! </span>
     <a routerLink="">To Landing Page</a>
+    <a routerLink="home">To Home Page</a>
     <div *ngIf="auth.userData; then loggedIn else guest"></div>
     <ng-template #loggedIn>
-        <a routerLink="home">To Home Page</a>
+        <a routerLink="home">To Home Page</a> 
+        <a routerLink="profile">profile</a>
         <button class="btn" (click)="auth.doSignOut()">Logout</button>
     </ng-template>
     <ng-template #guest>
         <button class="btn" routerLink="login">Login</button>
         <button class="btn" routerLink="register">Register</button>
     </ng-template>
-</div>
+</div> -->

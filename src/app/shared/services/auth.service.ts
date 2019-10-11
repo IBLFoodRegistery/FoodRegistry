@@ -126,4 +126,8 @@ export class AuthService {
     get currentUserObservable(): any {
         return this.afAuth.authState;
     }
+
+    getRole(){
+        return this.userData.role;
+    }
 }

@@ -24,10 +24,6 @@ export class FoodComponent implements OnInit {
         this.refreshFoodList();
     }
 
-    getRole() {
-        return this.auth.userData.role;
-    }
-
     resetForm(form?: NgForm) {
         if (form)
             form.reset();

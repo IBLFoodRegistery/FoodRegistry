@@ -25,10 +25,10 @@
                     </ng-template>
                     <div *ngIf="getRole() === 'Subscriber'; then subscriber else noSub"></div>
                     <ng-template #subscriber>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="login">Update Profile</a>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="profile">Update Profile</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Subscribe for Food
-                                Packages</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="registerFood">Subscribe
+                                Food Packages</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Subscribe for Care
                                 Packages</a></li>
                     </ng-template>

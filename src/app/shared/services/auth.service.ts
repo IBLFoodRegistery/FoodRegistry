@@ -10,7 +10,7 @@ import { ProfileService } from 'src/app/components/profile/shared/profile.servic
 
 
 class User {
-    role?: string;
+    role: string;
     userName: string;
     email: string;
     uid: string;

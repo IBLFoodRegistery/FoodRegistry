@@ -13,9 +13,13 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" routerLink="landing" style="font-size: large">Home</a>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="profile">Update
                         Profile</a></li>
                     <div *ngIf="auth.userData.role === 'Admin'; then Admin else noAdmin"></div>
+=======
+                    <div *ngIf="getRole() === 'Admin'; then Admin else noAdmin"></div>
+>>>>>>> scott-dev
                     <ng-template #Admin>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="profile">Update
                                 Profile</a></li>
@@ -24,10 +28,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="registerCare">Register
                                 Care Packages</a></li>
                     </ng-template>
-                    <ng-template #noAdmin>
-                        <div>get out please</div>
-                    </ng-template>
-                    <div *ngIf="auth.userdata.role === 'Subscriber'; then subscriber else noSub"></div>
+                    <div *ngIf="getRole() === 'Subscriber'; then subscriber else noSub"></div>
                     <ng-template #subscriber>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="login">Update Profile</a>
                         </li>
@@ -36,9 +37,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="">Subscribe for Care
                                 Packages</a></li>
                     </ng-template>
-                    <ng-template #noSub>
-                        <div>get out please</div>
-                    </ng-template>
+
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" routerLink="landing" (click)="auth.doSignOut()">Logout</a>
                     </li>
@@ -50,8 +49,6 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" routerLink="login">Login</a>
                     </li>
-
-
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" routerLink="register">Register</a>
                     </li>

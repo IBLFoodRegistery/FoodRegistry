@@ -11,9 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FoodComponent } from './components/food/food.component';
 import { CareComponent } from './components/care/care.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';
+
 
 const routes: Routes = [
     { path: '', component: LandingComponent, pathMatch: 'full' },
@@ -24,6 +26,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent},
     { path: 'registerFood', component: FoodComponent},
     { path: 'registerCare', component: CareComponent},
+    { path: 'orders', component: OrdersComponent },
     { path: '**', redirectTo: ''},
 
 ];

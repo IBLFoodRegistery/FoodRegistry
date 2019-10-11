@@ -12,8 +12,4 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
     }
-
-    getRole() {
-        return this.auth.userData.role;
-    }
 }

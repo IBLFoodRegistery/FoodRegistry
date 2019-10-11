@@ -21,6 +21,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FoodComponent } from './components/food/food.component';
 import { CareComponent } from './components/care/care.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 // Services
 import { AuthService } from './shared/services/auth.service';
@@ -30,6 +31,7 @@ import { FoodService } from './shared/food.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
+
 
 @NgModule({
     declarations: [
@@ -43,6 +45,7 @@ import { environment } from 'src/environments/environment';
         HomeComponent,
         ErrorComponent,
         FoodComponent,
+        OrdersComponent,
 
     ],
     imports: [

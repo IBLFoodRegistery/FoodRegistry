@@ -18,6 +18,10 @@ export class ProfileComponent implements OnInit {
 
     }
 
+    getRole() {
+      return this.auth.userData.role;
+  }
+
     ngOnInit() {
       this.auth.getCurrentUser().then(user =>{
         this.loadProfile(user);

@@ -9,14 +9,12 @@
                     <div class="col s5">
                         <form #careForm="ngForm" (ngSubmit)="onSubmit(careForm)">
                             <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="careService.selectedCare._id">
-
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" name="name" required #name="ngModel"
                                         [(ngModel)]="careService.selectedCare.name" placeholder="Enter care name">
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" name="quantity" #name="ngModel"
@@ -31,7 +29,6 @@
                                         placeholder="Enter description ">
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="input-field col s12">
                                     <button class="btn btn-custom right" type="button"
@@ -40,7 +37,6 @@
                                         [disabled]="!careForm.valid">Submit</button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                     <div class="col s7">
@@ -73,5 +69,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

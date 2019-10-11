@@ -21,14 +21,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.post("/addUser", (req, res) => {
+    console.log(req.body._id);
     var usr = new User({
-        _id: req.body.uid,
-        name: req.body.userName,
-        email: req.body.email,
+        _id: req.body._id,
+        userName: req.body.userName,
         role: req.body.role,
+        email: req.body.email,
         familyMembers: req.body.familyMembers,
-        foodPackage: req.body.foodPackage,
         carePackage: req.body.carePackage,
+        foodPackage: req.body.foodPackage,
     });
     usr.save((err, doc) => {
         if (!err) { res.send(doc); }

@@ -104,7 +104,7 @@ export class AuthService {
         };
 
         userRef.set(data, { merge: true }).then(res2 => {
-            this.addtoMongo(data)
+            this.addtoMongo(data);
         });
     }
 

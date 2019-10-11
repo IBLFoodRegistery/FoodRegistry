@@ -17,11 +17,11 @@
                         <!-- <li>{{user.uid}}</li> -->
                     </ul>
                 </div>
-                <div *ngIf="auth.userData.role ==='Admin'; then Admin else noAdmin"></div>
+                <div *ngIf="auth.userData.role === 'Admin'; then Admin else noAdmin"></div>
                 <ng-template #Admin>
-                    <li><a routerLink="login">Update Profile</a></li>
-                    <li><a routerLink="">Register Food Packages</a></li>
-                    <li><a routerLink="">Register Care Packages</a></li>
+                    <li><a routerLink="profile">Update Profile</a></li>
+                    <li><a routerLink="registerFood">Register Food Packages</a></li>
+                    <li><a routerLink="registerCare">Register Care Packages</a></li>
                 </ng-template>
 
 
@@ -42,4 +42,11 @@
                     </p>
                     <p><b style="color: teal">Welcome</b></p>
                 </div>
+            </ng-template>
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Help?</a>
+            </div>
         </div>
+    </div>
+
+</div>

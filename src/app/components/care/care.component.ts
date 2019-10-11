@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 
 import { Care } from 'src/app/shared/care.model';
 import { CareService } from 'src/app/shared/care.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 declare var M: any;
 @Component({
@@ -15,7 +16,7 @@ declare var M: any;
 })
 export class CareComponent implements OnInit {
 
-    constructor(private careService: CareService) { }
+    constructor(private careService: CareService, private auth: AuthService) { }
 
     ngOnInit() {
         this.resetForm();

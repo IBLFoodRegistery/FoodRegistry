@@ -127,7 +127,7 @@ export class AuthService {
         return this.afAuth.authState;
     }
 
-    getRole(){
+    getRole() {
         return this.userData.role;
     }
 }

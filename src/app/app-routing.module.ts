@@ -10,10 +10,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FoodComponent } from './components/food/food.component';
-import { CarepackageComponent } from './components/carepackage/carepackage.component';
+import { CareComponent } from './components/care/care.component';
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';
+
 
 
 
@@ -26,7 +27,7 @@ const routes: Routes = [
     { path: 'error', component: ErrorComponent },
     { path: 'profile', component: ProfileComponent},
     { path: 'registerFood', component: FoodComponent},
-    { path: 'registerCare', component: CarepackageComponent},
+    { path: 'registerCare', component: CareComponent},
     { path: '**', redirectTo: ''},
 
 ];

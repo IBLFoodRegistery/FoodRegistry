@@ -2,31 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 
-import { Food } from 'src/app/shared/food.model';
-import { FoodService } from 'src/app/shared/food.service';
-
+import { Care } from 'src/app/shared/care.model';
+import { CareService } from 'src/app/shared/care.service';
 
 declare var M: any;
 @Component({
-    selector: 'app-food',
-    templateUrl: './food.component.html',
-    styleUrls: ['./food.component.css'],
-    providers: [FoodService]
+    selector: 'app-care',
+    templateUrl: './care.component.html',
+    styleUrls: ['./care.component.css'],
+    providers: [CareService]
 
 })
-export class FoodComponent implements OnInit {
+export class CareComponent implements OnInit {
 
-    constructor(private foodService: FoodService) { }
+    constructor(private careService: CareService) { }
 
     ngOnInit() {
         this.resetForm();
-        this.refreshFoodList();
+        this.refreshCareList();
     }
 
     resetForm(form?: NgForm) {
         if (form)
             form.reset();
-        this.foodService.selectedFood = {
+        this.careService.selectedCare = {
             _id: "",
             name: "",
             quantity: null,
@@ -36,41 +35,42 @@ export class FoodComponent implements OnInit {
     }
     onSubmit(form: NgForm) {
         if (form.value._id == "") {
-            this.foodService.postFood(form.value).subscribe((res) => {
+            this.careService.postCare(form.value).subscribe((res) => {
                 this.resetForm(form);
-                this.refreshFoodList();
+                this.refreshCareList();
                 M.toast({ html: 'Saved successfully', classes: 'rounded' });
             });
         }
         else {
-            this.foodService.putFood(form.value).subscribe((res) => {
+            this.careService.putCare(form.value).subscribe((res) => {
                 this.resetForm(form);
-                this.refreshFoodList();
+                this.refreshCareList();
                 M.toast({ html: 'Updated successfully', classes: 'rounded' });
             });
         }
     }
 
-    onEdit(food: Food) {
-        this.foodService.selectedFood = food;
+    onEdit(care: Care) {
+        this.careService.selectedCare = care;
     }
 
 
-    refreshFoodList() {
-        this.foodService.getFoodList().subscribe((res) => {
-            this.foodService.foods = res as Food[];
+    refreshCareList() {
+        this.careService.getCareList().subscribe((res) => {
+            this.careService.cares = res as Care[];
         });
     }
 
     onDelete(_id: string, form: NgForm) {
         if (confirm('Are you sure to delete this record ?') == true) {
-            this.foodService.deleteFood(_id).subscribe((res) => {
-                this.refreshFoodList();
+            this.careService.deleteCare(_id).subscribe((res) => {
+                this.refreshCareList();
                 this.resetForm(form);
                 M.toast({ html: 'Deleted successfully', classes: 'rounded' });
             });
         }
     }
+
 
 
 }

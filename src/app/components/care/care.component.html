@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #careForm="ngForm" (ngSubmit)="onSubmit(careForm)">
+                            <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="careService.selectedCare._id">
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="name" required #name="ngModel"
+                                        [(ngModel)]="careService.selectedCare.name" placeholder="Enter care name">
+                                    <label>Name :
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="quantity" #name="ngModel"
+                                        [(ngModel)]="careService.selectedCare.quantity" placeholder="Enter Quantity">
+                                    <label>quantity :</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="description" #name="ngModel"
+                                        [(ngModel)]="careService.selectedCare.description"
+                                        placeholder="Enter description ">
+                                    <label>description :</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button"
+                                        (click)="resetForm(careForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit"
+                                        [disabled]="!careForm.valid">Submit</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let care of careService.cares">
+                                <td>{{care.name}}</td>
+                                <td>{{care.quantity}}</td>
+                                <td>{{care.description}}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEdit(care)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDelete(care._id,careForm)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,16 +19,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProfileComponent } from './components/profile/profile.component';
-<<<<<<< HEAD
-import { FoodComponent } from './food/food.component';
-import { CareComponent } from './care/care.component';
-
-//Orders
-import { OrdersComponent } from './orders/orders.component';
-=======
 import { FoodComponent } from './components/food/food.component';
 import { CareComponent } from './components/care/care.component';
->>>>>>> origin/scott-dev
 
 // Services
 import { AuthService } from './shared/services/auth.service';
@@ -38,15 +30,6 @@ import { FoodService } from './shared/food.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> origin/scott-dev
 
 @NgModule({
     declarations: [

@@ -20,6 +20,13 @@ export class OrdersComponent implements OnInit {
 
   onSelect(order: Order):void{
     this.selectedOrder = order;
+    
   }
+
+  statusUpdate():void{
+    this.selectedOrder.status = 'processed'
+  }
+
+
 
 }

@@ -1,6 +1,8 @@
-<h2>Orders to Process</h2>
+<div class="orders-background">
 
-<ul class = "orders">
+<h2 style="color:white;">Orders Pending/Processed</h2>
+
+<ul class = "orders" >
     <li *ngFor="let order of orders"(click)="onSelect(order)"
         [class.selected]="order === selectedOrder"
         (click)="onSelect(order)">
@@ -8,15 +10,27 @@
     </li>
 </ul>
 
-<div *ngIf="selectedOrder">
-    <h2>{{selectedOrder.name | uppercase}} Details</h2>
-    <div><span>Wath ever Details from order : </span>{{selectedOrder.id}}</div>
+<div style="color:white; " *ngIf="selectedOrder">
+    <h2>Details</h2>
+    <div><span>Details from order : </span>{{selectedOrder.name|uppercase}}</div>
     <div>
-        <label>
-            <input [(ngModel)] = "orders.name" placeholder="name"/>
-        </label>
+        <div *ngIf="selectedOrder.status == 'processed'">
+            <h1  style="color:red;">{{selectedOrder.status|uppercase}}</h1>
+        </div>
+
+        <div *ngIf="selectedOrder.status == 'pending'">
+            <h1 >{{selectedOrder.status|uppercase}}</h1>
+            <!--input [(ngModel)] = "orders.name" placeholder="name"/-->
+            <li *ngFor="let item of selectedOrder.list">
+                {{item}}
+            </li>
+            <br>
+            <ul class = "orders">
+                    <button type="button" (click)="statusUpdate()"class="button">Process Order</button>
+            </ul>
+        </div>    
     </div>
-    
+</div>
 </div>
 
 

@@ -16,6 +16,10 @@
                 for="user-email">Email:</label>
             <p style="text-align:center;font-size: smaller;overflow-wrap: break-word; font-size: medium"
                 id="user-email">{{profile.email}} </p>
+            <label style="text-align:center;font-size: smaller;overflow-wrap: break-word; font-size: medium"
+                for="user-role">Role:</label>
+            <p style="text-align:center;font-size: smaller;overflow-wrap: break-word; font-size: medium"
+                id="user-role">{{profile.role}} </p>
             <div *ngIf="getRole() === 'Admin'; then Admin else subscriber"></div>
             <ng-template #subscriber>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center">

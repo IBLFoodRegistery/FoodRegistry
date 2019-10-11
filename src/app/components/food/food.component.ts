@@ -28,22 +28,21 @@ export class FoodComponent implements OnInit {
         if (form)
             form.reset();
         this.foodService.selectedFood = {
-            _id: "",
-            name: "",
+            _id: '',
+            name: '',
             quantity: null,
-            description: ""
+            description: ''
 
         }
     }
     onSubmit(form: NgForm) {
-        if (form.value._id == "") {
+        if (form.value._id === '') {
             this.foodService.postFood(form.value).subscribe((res) => {
                 this.resetForm(form);
                 this.refreshFoodList();
                 M.toast({ html: 'Saved successfully', classes: 'rounded' });
             });
-        }
-        else {
+        } else {
             this.foodService.putFood(form.value).subscribe((res) => {
                 this.resetForm(form);
                 this.refreshFoodList();
@@ -64,7 +63,7 @@ export class FoodComponent implements OnInit {
     }
 
     onDelete(_id: string, form: NgForm) {
-        if (confirm('Are you sure to delete this record ?') == true) {
+        if (confirm('Are you sure to delete this record ?') === true) {
             this.foodService.deleteFood(_id).subscribe((res) => {
                 this.refreshFoodList();
                 this.resetForm(form);

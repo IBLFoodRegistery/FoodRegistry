@@ -5,6 +5,8 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content white-text">
+                <div *ngIf="auth.getRole() === 'Admin'; then Admin else noAdmin"></div>
+                <ng-template #Admin>
                 <div class="row">
                     <div class="col s5">
                         <form #careForm="ngForm" (ngSubmit)="onSubmit(careForm)">
@@ -65,6 +67,32 @@
                         </table>
                     </div>
                 </div>
+                </ng-template>
+                <div *ngIf="auth.getRole() === 'Subscriber'; then subscriber else noSub"></div>
+                <ng-template #subscriber>
+                        <div class="row">
+                        <div class="col s7">
+                                <table class="responsive-table highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Description</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tr *ngFor="let care of careService.cares">
+                                        <td>{{care.name}}</td>
+                                        <td>{{care.quantity}}</td>
+                                        <td>{{care.description}}</td>
+                                        <td>
+                                            <button style="color:black">Subscibe</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>  
+                            </div>
+                </ng-template>
             </div>
         </div>
     </div>

@@ -16,28 +16,37 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { CarepackageComponent } from './components/carepackage/carepackage.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProfileComponent } from './components/profile/profile.component';
+<<<<<<< HEAD
 import { FoodComponent } from './food/food.component';
 import { CareComponent } from './care/care.component';
 
 //Orders
 import { OrdersComponent } from './orders/orders.component';
+=======
+import { FoodComponent } from './components/food/food.component';
+import { CareComponent } from './components/care/care.component';
+>>>>>>> origin/scott-dev
 
 // Services
 import { AuthService } from './shared/services/auth.service';
 import { ProfileService } from './components/profile/shared/profile.services';
+import { CareService } from './shared/care.service';
+import { FoodService } from './shared/food.service';
 
 // Constants
 import { environment } from 'src/environments/environment';
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> origin/scott-dev
 
 @NgModule({
     declarations: [
@@ -47,11 +56,11 @@ import { environment } from 'src/environments/environment';
         RegisterComponent,
         LandingComponent,
         ProfileComponent,
-        CarepackageComponent,
+        CareComponent,
         HomeComponent,
         ErrorComponent,
-		FoodComponent,
-        CareComponent,
+        FoodComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -63,7 +72,7 @@ import { environment } from 'src/environments/environment';
         HttpClientModule
     ],
 
-    providers: [AuthService, ProfileService, HttpClient],
+    providers: [AuthService, ProfileService, HttpClient, CareService, FoodService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

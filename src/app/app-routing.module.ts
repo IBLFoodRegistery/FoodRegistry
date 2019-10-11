@@ -9,9 +9,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+<<<<<<< HEAD
+=======
+import { FoodComponent } from './components/food/food.component';
+import { CareComponent } from './components/care/care.component';
+>>>>>>> origin/scott-dev
 
 // Services
 import { AuthGuard } from './shared/services/auth.guard';
+
+
+
 
 
 const routes: Routes = [
@@ -21,6 +29,8 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'error', component: ErrorComponent },
     { path: 'profile', component: ProfileComponent},
+    { path: 'registerFood', component: FoodComponent},
+    { path: 'registerCare', component: CareComponent},
     { path: '**', redirectTo: ''},
 
 ];

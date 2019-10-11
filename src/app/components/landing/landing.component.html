@@ -19,9 +19,9 @@
     </div>
     <div *ngIf="auth.userData.role ==='Admin'; then Admin else noAdmin"></div>
          <ng-template #Admin>
-               <li><a routerLink="login">Update Profile</a></li>
-               <li><a routerLink="">Register Food Packages</a></li>
-               <li><a routerLink="">Register Care Packages</a></li>
+               <li><a routerLink="profile">Update Profile</a></li>
+               <li><a routerLink="registerFood">Register Food Packages</a></li>
+               <li><a routerLink="registerCare">Register Care Packages</a></li>
        </ng-template>
     
 
